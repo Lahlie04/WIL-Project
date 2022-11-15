@@ -1,1 +1,29 @@
 /* You can add global styles to this file, and also import other style files */
+@import "~bootstrap/dist/css/bootstrap.css";
+
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap%22");
+  
+.admin-main {
+  margin-left: 250px;
+}
+.text-green {
+  color: #3F8A89;
+}
+.bg-green {
+  background: #3F8A89;
+}
+.border-green {
+  border-color: #3F8A89 !important;
+}
+.bg-light-green {
+  background: #f2f8fc;
+}
+.rounded-4 {
+  border-radius: 20px;
+}
+.cursor-not-allowed {
+  cursor: not-allowed;
+}
+.cursor-pointer {
+  cursor: pointer;
+}

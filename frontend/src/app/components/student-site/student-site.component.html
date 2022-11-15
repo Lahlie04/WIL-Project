@@ -1,1 +1,26 @@
-<p>student-site works!</p>
+
+
+<app-sidebar></app-sidebar>
+
+<div class="d-flex justify-content-between mb-3">
+    <h3 class="text-danger display-5 text-center mx-4">Student Dashboard</h3>
+    <div class="text-muted large mx-5 mt-3">
+      <p class="m-0">{{student.name}} {{student.lastname}}</p>
+      <p class="m-0">{{student.email}}</p>
+    </div>
+  </div>
+
+<div class="container my-3">
+    <div class="row mt-4 mx-5">
+        <div class="col mx-4">
+            <div *ngFor="1 of [1, 2, 3]"
+            class="my-2 bg-primary bg-gradient rounded-4 border shadow-sm p-3 text-light cursor-not-allowed">
+            <span class="badge rounded-pill border border-light float-end">status</span>
+            <p class="mb-1 fw-bold text-capitalize">Name</p>
+            <p class="my-1 small">inner text</p>
+            <p class="m-0 small">Date</p>
+        </div>
+        </div>
+       
+    </div>
+  </div>

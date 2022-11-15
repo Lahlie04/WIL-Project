@@ -58,7 +58,21 @@ const getUserByEmailDb = async (email) => {
         [email]
     );
     return exists? exists[0]: false;
-} 
+};
+
+const getAllLactureDb = async () =>{
+    try {
+        const lectures = await pool.query(
+            `SELECT * FROM users
+             WHERE role = STUDENT`
+        );
+        console.log(lectures.rows);
+        return lectures.rows 
+    } catch (error) {
+        throw error
+    }
+    
+}
 
 
 
@@ -66,5 +80,6 @@ module.exports = {
     createUserDb,
     createStudentDb,
     createLectureDb,
-    getUserByEmailDb
+    getUserByEmailDb,
+    getAllLactureDb
 }

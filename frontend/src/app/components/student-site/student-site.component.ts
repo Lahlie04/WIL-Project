@@ -7,9 +7,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class StudentSiteComponent implements OnInit {
 
+  student: any;
   constructor() { }
 
   ngOnInit(): void {
+    this.student = JSON.parse(localStorage.getItem("user")|| '{}');
+    console.log(this.student);
+    
   }
 
 }

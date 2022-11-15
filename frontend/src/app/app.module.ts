@@ -8,6 +8,11 @@ import { LandingPageComponent } from './components/landing-page/landing-page.com
 import { RegisterComponent } from './components/register/register.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { StudentSiteComponent } from './components/student-site/student-site.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { NgxUiLoaderModule } from 'ngx-ui-loader';
+import { SidebarComponent } from './components/sidebar/sidebar.component';
+import { LogoutbuttonComponent } from './components/logoutbutton/logoutbutton.component';
 
 @NgModule({
   declarations: [
@@ -16,11 +21,19 @@ import { StudentSiteComponent } from './components/student-site/student-site.com
     LandingPageComponent,
     RegisterComponent,
     DashboardComponent,
-    StudentSiteComponent
+    StudentSiteComponent,
+    SidebarComponent,
+    LogoutbuttonComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+    NgxUiLoaderModule,
+    // NgxSpinnerModule,
+    // NgxPaginationModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,0 +1,92 @@
+body{
+    background: #c9ccd1;
+}
+
+
+.log{
+   
+
+    font-size: 1.4rem;
+    color: #3F8A89;
+    text-transform: capitalize;
+    line-height: 1.4;
+  }
+
+
+#loginContainer{
+    height: 100%;
+}
+
+#submit{
+    display: inline-block;
+//   padding: 0.9rem 1.9rem;
+  color: #fff !important;
+  background-color: #3F8A89;
+  border-radius: 16px;
+  text-transform: capitalize;
+  transition: 0.3s;
+}
+
+.form-control{
+    background-color: #455a64;
+}
+
+::placeholder{
+    color:  white;
+}
+
+a {
+    color: #3F8A89;
+    text-decoration: none;
+  }
+  
+ 
+
+  @media screen and (max-width:540px){
+    .border-start{
+     border: none !important;
+    }
+  }
+
+//Loader/
+.overlay {
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  background: rgba(246, 245, 245, 0.294)
+}
+
+.overlay__inner {
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+}
+
+.overlay__content {
+  left: 50%;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.spinner {
+  width: 75px;
+  height: 75px;
+  display: inline-block;
+  border-width: 2px;
+  border-color: rgba(255, 255, 255, 0.05);
+  border-top-color: rgb(15, 60, 158);
+  animation: spin 1s infinite linear;
+  border-radius: 100%;
+  border-style: solid;
+}
+
+@keyframes spin {
+100% {
+  transform: rotate(360deg);
+}
+}

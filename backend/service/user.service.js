@@ -1,6 +1,7 @@
 const {createUserDb, createStudentDb, createLectureDb, getUserByEmailDb} = require('../db/user.db');
 const {hashPassword, comparePassword} = require('../helpers/password');
 const {roles} = require('../helpers/constant');
+const {generateToken} = require('../middleware/jwt');
 
 class USerService{
     createUser = async (my_user) => {
@@ -42,6 +43,27 @@ class USerService{
         }
 
     }
+
+    login = async ({email, password}) =>{
+        //find user if exists
+        const user = await getUserByEmailDb(email);
+
+        //if user not fount 
+        if(!user) {throw Error("User not found check email and password");}
+
+        //call function to compare hash with plain user input(password);
+        const result = await comparePassword(password, user.password);
+
+        if(result){
+            //create token
+            const token = await generateToken({userId: user.id, userRole: user.role});
+            return {user: user,token};
+        }
+        else{
+            throw new Error("Password do not match");
+        }
+    };
+
 }
 
 module.exports = new USerService();
