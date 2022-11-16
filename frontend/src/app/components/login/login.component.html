@@ -3,7 +3,7 @@
 
     <div class="row align-items-center my-5">
       <div class="col col-sm-12 col-lg-6">
-        <img class="img-fluid" src="../../../assets/images/login.png" alt="" />
+        <img class="img-fluid" src="../../../assets/images/Authentication-rafiki.png" alt="" />
       </div>
       <div class="col col-12 col-lg-6 border-start mt-2">
         <div class="log">
@@ -13,7 +13,7 @@
           <form class="text-center" [formGroup]="loginForm" (ngSubmit)="login()">
             <div class="mb-4">
               <div class="input-group form-group mb-2">
-                <span class="input-group-text"><i class="fa fa-phone"></i></span>
+                <span class="input-group-text"><i class="fa fa-envelope"></i></span>
                 <input
                   type="email"
                   name="Email"
@@ -88,9 +88,10 @@
               </div>
               <!--end of validation-->
             </div>
-            <div class="mb-4">
-              <p class="text-start">Forgot password?</p>
-            </div>
+            <!-- <div class="mb-4">
+              <p class="text-start">Don't have an account</p>
+            </div> -->
+          
             <div class="login">
               <button
                 type="submit"
@@ -102,6 +103,9 @@
               >
                 Login
               </button>
+
+              <p class="mb-4">Don't have an account? <a routerLink='/register'>Register</a></p>
+
               <!--Loader code-->
     <div *ngIf="isLoading" class="overlay">
       <div class="overlay__inner">

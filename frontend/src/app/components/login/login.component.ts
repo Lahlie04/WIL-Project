@@ -63,7 +63,7 @@ export class LoginComponent implements OnInit {
         localStorage.setItem("user",JSON.stringify(myobject.user));
         localStorage.setItem("auth-token",myobject.token); 
         if(myobject.user.role==="STUDENT"){  
-            return this.router.navigate(['/']);
+            return this.router.navigate(['/student']);
         }else if (myobject.user.role==="LECTURE"){
            
             return this.router.navigate(['/interpreterbooking']);
