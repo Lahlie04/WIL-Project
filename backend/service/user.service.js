@@ -32,7 +32,7 @@ class USerService{
                 }
                 else
                 if(newuser.role && newuser.role.toUpperCase() == roles.LECTURE){
-                    const lecture = await createLectureDb({userID: newuser.id, stuff_no: newuser.stuff_no});
+                    const lecture = await createLectureDb({userID: newuser.id, stuff_no: user.stuff_no, module: user.module});
                     return lecture;
                 }
                 else{

@@ -35,14 +35,14 @@ const createStudentDb = async ({userID,student_no}) =>{
     }
 };
 
-const createLectureDb = async ({userID,stuff_no}) =>{
+const createLectureDb = async ({userID,stuff_no,module}) =>{
 
     try {
         const tenant = await pool.query(
-            `INSERT INTO lecture(userID, stuff_no)
-             VALUES($1, $2)
-             RETURNING userID, student_no`,
-             [userID, stuff_no]
+            `INSERT INTO lecture(userID, stuff_no, module)
+             VALUES($1, $2, $3)
+             RETURNING userID, stuff_no, module`,
+             [userID, stuff_no, module]
         );
         const mytenant = tenant.rows[0];
         console.log(mytenant);
@@ -63,8 +63,8 @@ const getUserByEmailDb = async (email) => {
 const getAllLactureDb = async () =>{
     try {
         const lectures = await pool.query(
-            `SELECT * FROM users
-             WHERE role = STUDENT`
+            `SELECT * FROM users, lecture
+             WHERE users.id = lecture.userid`
         );
         console.log(lectures.rows);
         return lectures.rows 
@@ -74,6 +74,38 @@ const getAllLactureDb = async () =>{
     
 }
 
+// studentID integer,
+//     lectureID integer,
+//     admision_letter varchar(200),
+//     wil_letter varchar(200),
+//     employee_letter varchar(200),
+//     status varchar(50),
+
+const getStudentDb = async () =>{
+    const studentID = await pool.query(
+        `SELECT * FROM users, student
+         WHERE  users.id = student.userid
+         `
+    );
+
+    return studentID.rows;
+}
+
+const applicationDb = async (studentID, lectureID, status) =>{
+    try {
+        const application = await pool.query(
+            `INSERT INTO application(studentID, lectureID, status)
+             VALUES($1, $2, $3)
+             RETURNING *`,[studentID, lectureID, status]
+        );
+
+        console.log(application.rows[0]);
+        return application.rows[0];
+    } catch (error) {
+        throw(error);
+    }
+}
+
 
 
 module.exports = {
@@ -81,5 +113,7 @@ module.exports = {
     createStudentDb,
     createLectureDb,
     getUserByEmailDb,
-    getAllLactureDb
+    getAllLactureDb,
+    getStudentDb,
+    applicationDb
 }

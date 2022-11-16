@@ -3,7 +3,7 @@
 <app-sidebar></app-sidebar>
 
 <div class="d-flex justify-content-between mb-3">
-    <h3 class="text-danger display-5 text-center mx-4">Student Dashboard</h3>
+    <h3 class="text-danger display-5 text-center mx-4"><b>Student Dashboard</b></h3>
     <div class="text-muted large mx-5 mt-3">
       <p class="m-0">{{student.name}} {{student.lastname}}</p>
       <p class="m-0">{{student.email}}</p>
@@ -13,14 +13,63 @@
 <div class="container my-3">
     <div class="row mt-4 mx-5">
         <div class="col mx-4">
-            <div *ngFor="1 of [1, 2, 3]"
-            class="my-2 bg-primary bg-gradient rounded-4 border shadow-sm p-3 text-light cursor-not-allowed">
-            <span class="badge rounded-pill border border-light float-end">status</span>
-            <p class="mb-1 fw-bold text-capitalize">Name</p>
-            <p class="my-1 small">inner text</p>
-            <p class="m-0 small">Date</p>
+            <div *ngFor="let lecture of lectures"
+            class="my-2 bg-primary bg-gradient rounded-4 border shadow-sm p-3 text-light ">
+            <span class="badge rounded-pill border border-light float-end p-2 cursor-pointer" data-mdb-ripple-color="dark"
+            data-bs-toggle="modal" data-bs-target="#ModalForm2" (click)="getLectureID(lecture.userid)">Upload Documents</span>
+            <br>
+            <span class="float-end">
+                
+            </span>
+            <p class="mb-2 fw-bold text-capitalize">{{lecture.name}} {{lecture.lastname}}</p>
+            <p class="my-1 small">{{lecture.module}}</p>
+            <p class="m-0 small">{{lecture.email}}</p>
+            <p class="m-0 small">A student is required to upload a WIL form, Contract of employment,
+                 and Re-Admission form for the lecture to register on their behalf, click on the upload
+                 documents to submit your documents. The lecture will assess them and give feedback to the student</p>
         </div>
         </div>
        
     </div>
   </div>
+
+  <!-- <button class="btn btn-outline-success text-light" (click)="loggeIn()" data-mdb-ripple-color="dark"
+          data-bs-toggle="modal" data-bs-target="#ModalForm2"> MAKE PLEDGE</button> -->
+
+
+  <div class="modal fade" id="ModalForm2" tabindex="-1" aria-labelledby="ModalFormLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-body text-light">
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            <div class="myform ">
+                <h1 class="text-center">Required Documents</h1>
+                <form  class="text-center" [formGroup]="uploadForm" >
+                    <div class="mb-3 mt-4 form-group" >
+                        <label for="exampleInputEmail1" class="form-label">Re-Admission Form</label>
+
+                        <input type="file" class="form-control"  id="exampleInputEmail1" formControlName="admission"  aria-describedby="emailHelp" (change)="selectThisFile($event)">
+                    </div>
+
+                    <div class="mb-3 mt-4 form-group" >
+                        <label for="exampleInputEmail2" class="form-label">WIL Form</label>
+
+                        <input type="file" class="form-control"  id="exampleInputEmail2" formControlName="wilForm"  aria-describedby="emailHelp">
+                    </div>
+                    <div class="mb-3 mt-4 form-group" >
+                        <label for="exampleInputEmail3" class="form-label">Contract of Employment</label>
+
+                        <input type="file" class="form-control"  id="exampleInputEmail3" formControlName="contract"  aria-describedby="emailHelp">
+                    </div>
+                    <!-- <div class="mb-3">
+                        <label for="exampleInputPassword1" class="form-label">Amount to reach</label>
+                        <input type="number" class="form-control" id="exampleInputPassword1" formControlName="target_amount">
+                    </div> -->
+                    <button type="submit"  class="btn btn-primary mt-3" (click)="upload()">Submit</button>
+
+                </form>
+            </div>
+        </div>
+      </div>
+    </div>
+</div>

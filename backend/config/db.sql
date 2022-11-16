@@ -23,6 +23,7 @@ CREATE TABLE public.lecture(
 	ID serial NOT NULL, 
 	userID integer,
     stuff_no varchar(100),
+    module varchar(20),
     created_at timestamp without time zone DEFAULT CURRENT_TIMESTAMP,
     updated_at timestamp without time zone DEFAULT CURRENT_TIMESTAMP,
 	Primary Key(ID)	
@@ -31,6 +32,7 @@ CREATE TABLE public.lecture(
 CREATE TABLE public.office(
 	ID serial NOT NULL, 
 	lectureID integer,
+    office_no varchar(10),
     phone_number varchar(15),
     created_at timestamp without time zone DEFAULT CURRENT_TIMESTAMP,
     updated_at timestamp without time zone DEFAULT CURRENT_TIMESTAMP,
@@ -41,7 +43,7 @@ CREATE TABLE public.application(
 	ID serial NOT NULL, 
 	studentID integer,
     lectureID integer,
-    employee_letter varchar(200),
+    status varchar(50),
     created_at timestamp without time zone DEFAULT CURRENT_TIMESTAMP,
     updated_at timestamp without time zone DEFAULT CURRENT_TIMESTAMP,
 	Primary Key(ID)	
@@ -76,3 +78,6 @@ ALTER TABLE public.application
     REFERENCES public.lecture (ID)
     ON DELETE CASCADE
     NOT VALID;
+
+CREATE UNIQUE INDEX users_unique_lower_email_idx
+    ON public.users (lower(email));

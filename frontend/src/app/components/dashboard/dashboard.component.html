@@ -1,1 +1,65 @@
-<p>dashboard works!</p>
+
+
+<app-sidebar></app-sidebar>
+
+<div class="d-flex justify-content-between mb-3">
+    <h3 class="text-danger display-5 text-center mx-4"> <b> Lecture's Dashboard</b> </h3>
+    <div class="text-muted large mx-5 mt-3">
+      <p class="m-0">{{student.name}} {{student.lastname}}</p>
+      <p class="m-0">{{student.email}}</p>
+    </div>
+  </div>
+
+<div class="container my-3">
+    <div class="row mt-4 mx-5">
+        <div class="col mx-4">
+            <div *ngFor="let lecture of lectures"
+            class="my-2 bg-secondary bg-gradient rounded-4 border shadow-sm p-3 text-light ">
+            <a download="" href="../../../assets/Documents.pdf.pdf">
+                <span class="badge rounded-pill border border-light float-end p-2 cursor-pointer" >Download Documents</span>
+            </a>
+
+            <span class="float-end">
+                
+            </span>
+            <p class="mb-1 fw-bold text-capitalize">{{lecture.name}} {{lecture.lastname}}</p>
+            <p class="my-1 small">{{lecture.module}}</p>
+            <p class="m-0 small">{{lecture.email}}</p>
+            <p class="m-0 small">Student No: {{lecture.student_no}}</p>
+
+            <div class="action">
+                <button class="btn rounded-pill border border-light mt-2 bg-success text-light " (click)="accepted()">Accept</button>
+                <button class="btn rounded-pill border border-light mt-2 bg-danger text-light mx-2" data-mdb-ripple-color="dark"
+                data-bs-toggle="modal" data-bs-target="#ModalForm2">Decline</button>
+            </div>
+        </div>
+        </div>
+       
+    </div>
+  </div>
+
+  <!-- <button class="btn btn-outline-success text-light" (click)="loggeIn()" data-mdb-ripple-color="dark"
+          data-bs-toggle="modal" data-bs-target="#ModalForm2"> MAKE PLEDGE</button> -->
+
+
+  <div class="modal fade" id="ModalForm2" tabindex="-1" aria-labelledby="ModalFormLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-body text-light">
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            <div class="myform ">
+                <h1 class="text-center">Reason for Decline</h1>
+                <form  class="text-center" [formGroup]="uploadForm" >
+                    <div class="mb-3 mt-4 form-group" >
+                        <!-- <label for="exampleInputEmail1" class="form-label">Reason for Decline</label> -->
+
+                        <input type="textarea" class="form-control"  id="exampleInputEmail1" formControlName="admission"  aria-describedby="emailHelp" (change)="selectThisFile($event)">
+                    </div>
+
+                    <button type="submit"  class="btn btn-primary mt-3" (click)="upload()">Submit</button>
+                </form>     
+            </div>
+        </div>
+      </div>
+    </div>
+</div>

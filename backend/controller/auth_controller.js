@@ -5,7 +5,7 @@ const register = async (req, res, next) => {
     if (!req.body)
         return next(new Error("All fields required"));
 
-    const { name, password, email, lastname, role, student_no, lectureID, studentID, stuff_no } = req.body;
+    const { name, password, email, lastname, role, student_no, lectureID, module, studentID, stuff_no } = req.body;
     let data = {};
     data = {
         name: name ? String(name).trim() : null,
@@ -14,6 +14,7 @@ const register = async (req, res, next) => {
         lastname: lastname ? String(lastname).trim() : null,
         student_no: student_no ? String(student_no) : null,
         stuff_no: stuff_no ? String(stuff_no) : null,
+        module: module ? String(module) : null,
         studentID: studentID ? Number(tenantID) : null,
         lectureID: lectureID ? Number(tenantID) : null,
         role: role
